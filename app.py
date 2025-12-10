@@ -42,7 +42,6 @@ if mongo_url:
                 limit = st.sidebar.number_input("Limit", min_value=1, max_value=500, value=50)
                 skip = st.sidebar.number_input("Skip", min_value=0, value=0)
 
-                st.sidebar.markdown("---")
                 run = st.sidebar.button("Run Query")
 
                 if run:
@@ -54,7 +53,17 @@ if mongo_url:
 
                         # ---------------- MAIN OUTPUT ----------------
                         st.subheader(f"📄 Showing {len(docs)} Documents")
-                        st.json(json.loads(dumps(docs)))
+
+                        if not docs:
+                            st.warning("No documents found.")
+                        else:
+                            # Show each document as collapsible block
+                            for idx, doc in enumerate(docs):
+                                with st.expander(f"📌 Document {idx+1} (ID: {doc.get('_id')})", expanded=False):
+                                    st.code(
+                                        json.dumps(json.loads(dumps(doc)), indent=4),
+                                        language="json"
+                                    )
 
                     except Exception as e:
                         st.error(f"Error executing query: {e}")
