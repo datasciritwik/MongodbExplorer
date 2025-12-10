@@ -1,0 +1,2 @@
+# MongodbExplorer
+Lightweight Mongodb explorer.
