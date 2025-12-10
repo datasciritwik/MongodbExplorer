@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from bson.json_util import dumps
 import json
 
-st.set_page_config(page_title="MongoDB Explorer", icon="🧭")
+st.set_page_config(page_title="MongoDB Explorer", page_icon="🧭")
 
 # ---------------- SIDEBAR ----------------
 st.sidebar.header("⚙️ Configuration")
