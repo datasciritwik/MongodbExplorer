@@ -39,7 +39,7 @@ if mongo_url:
                 query_raw = st.sidebar.text_area("Filter (JSON)", "{}", height=120)
                 projection_raw = st.sidebar.text_area("Projection (JSON)", "{}", height=120)
 
-                limit = st.sidebar.number_input("Limit", min_value=1, max_value=500, value=50)
+                limit = st.sidebar.number_input("Limit", min_value=1, value=50)
                 skip = st.sidebar.number_input("Skip", min_value=0, value=0)
 
                 run = st.sidebar.button("Run Query")
@@ -73,3 +73,4 @@ if mongo_url:
 
 else:
     st.info("Enter a MongoDB connection URI in the sidebar.")
+
